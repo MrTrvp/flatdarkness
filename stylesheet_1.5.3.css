@@ -1445,10 +1445,8 @@ td .star_rating {
 .editor_control_bar {
     background: #222 !important;
     border: 1px dotted #111 !important;
-    width: auto !important;
-    text-align: left !important;
-    float: right !important;
-    margin-right: 17px !important;
+    width: 95% !important;
+    text-align: center !important;
 }
 
 .repbox {
