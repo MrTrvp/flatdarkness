@@ -9,7 +9,7 @@
 // @downloadURL   https://github.com/iHydra/flatdarkness/raw/master/flatdarkness.user.js
 // @require       https://code.jquery.com/jquery-2.1.4.min.js
 // @require       https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js
-// @resource      MainCSS https://raw.githubusercontent.com/iHydra/flatdarkness/master/stylesheet_1.5.3.css
+// @resource      MainCSS https://raw.githubusercontent.com/MrTrvp/flatdarkness/master/stylesheet_1.5.3.css
 // @resource      HLCSS https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/styles/monokai-sublime.css
 // @grant         GM_addStyle
 // @grant         GM_getResourceText
@@ -32,7 +32,7 @@ GM_addStyle(HLCSS);
  * USER EDITING
  */
 
-var userColor = "#00ffd2"; // Keep inside quotes - if you enter hex code, put # as prefix. Ex: "#282828" vs. "teal"
+var userColor = "red"; // Keep inside quotes - if you enter hex code, put # as prefix. Ex: "#282828" vs. "teal"
 var showLogo = false; // true to show logo, false to hide logo
 var enableSFW = false; // true to enable SFW, false to disable SFW (Safe For Work)
 var previewKey = 'w'; // ALT + {KEY} for Chrome || ALT + SHIFT + {KEY} for Firefox - More Info: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey
@@ -59,9 +59,9 @@ $(window).load(function () { // Theme Color Scheme Changer
         'darkred': '#641C1C'
     };
     if (!localStorage.getItem('theme'))
-        localStorage.setItem('theme', 'cl-' + Object.keys(colours) [0]);
-    $('body').addClass(localStorage.getItem('theme') ? localStorage.getItem('theme')  : 'cl-' + Object.keys(colours) [0]);
-    $('.cp').css('background', colours[$('body').attr('class').split(' ') [0].substring(3, $('body').attr('class').split(' ') [0].length)]);
+        localStorage.setItem('theme', 'cl-' + Object.keys(colours)[0]);
+    $('body').addClass(localStorage.getItem('theme') ? localStorage.getItem('theme')  : 'cl-' + Object.keys(colours)[0]);
+    $('.cp').css('background', colours[$('body').attr('class').split(' ')[0].substring(3, $('body').attr('class').split(' ')[0].length)]);
     $.each(colours, function (key, value) {
         select.append($('<div class=\'part\' style=\'background: ' + value + ' !important;\' cid=\'' + key + '\'/>'));
     });
@@ -146,6 +146,7 @@ $(document).ready(function () {
         $('strong:contains("Total Reputation:")').before("<br/><br/>"); // Received Rep Boxes Layout
         $('span[class^="repbox"]').after("<br/><br/>"); // Received Rep Boxes Layout
     }
+    
     if(showLogo === true){ // Show Logo
         $('img[src$="http://hackforums.net/images/modern_bl/logo_bl.gif"]').attr('src', 'http://i.imgur.com/fAzkq6w.png');
         $('div[class="logo"]').removeClass("logo").attr('style','text-align:center');
@@ -168,7 +169,6 @@ $(document).ready(function () {
         $('.sigButton').click(function() {   
             $(this).parent().find('.sigImage').toggleClass("sigReveal");
             $(this).parent().toggleClass("sigResize");
-
         });
     }
 
@@ -176,6 +176,7 @@ $(document).ready(function () {
         var userName = $('strong > a[href^="http://hackforums.net/member.php?action=profile&uid="]').text();
         $('blockquote > cite:contains(' + userName + ')').css({'color': userColor, 'font-weight': 'bold','border-bottom': '1px dotted' + userColor}); // If quoted, color-code it
     }
+    
     $('img[src$="hackforums.net/images/modern_bl/groupimages/english/ub3r.png"]').attr('style', '-webkit-filter: hue-rotate(15deg); filter: hue-rotate(15deg);'); // Uber Userbar Color Change
     $('img[src$="hackforums.net/images/modern_bl/starub3r2.png"]').attr('style', '-webkit-filter: hue-rotate(15deg); filter: hue-rotate(15deg);'); // Uber Stars Color Change
     $('strong span[style="rgb(56, 56, 56)"]').addClass("closedGroup"); // Changes Closed Usergroup Color
